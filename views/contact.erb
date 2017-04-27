@@ -1,12 +1,13 @@
-<h3>Here are addresses and phones for: <%= @contact.first_name() %> <%= @contact.last_name() %></h3>
-
+<h3><%= @contact.first_name() %> <%= @contact.last_name() %></h3>
+<h4>Address:</h4>
 <ul>
   <% @contact.address().each() do |address| %>
     <li><%= address.street_address() %> <%= address.city() %> <%= address.state()%> <%= address.type() %></li>
   <% end %>
 </ul>
+<h4>Phone number:</h4>
 <ul>
-  <% @contact.phone_number().each() do |address| %>
+  <% @contact.phone_number().each() do |phone_number| %>
     <li><%= phone_number.area_code() %> <%= phone_number.number() %> <%= phone_number.type()%></li>
   <% end %>
 </ul>
