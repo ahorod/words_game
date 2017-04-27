@@ -1,5 +1,5 @@
 require('rspec')
-require('contacts')
+require('contact')
 
 describe(Contact) do
   before() do

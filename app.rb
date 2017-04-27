@@ -1,9 +1,11 @@
 require('sinatra')
 require('sinatra/reloader')
 also_reload('lib/**/*.rb')
-require('./lib/contacts')
+require('./lib/contact')
 require('./lib/address')
 require('./lib/phone_number')
+require('pry')
+require('launchy')
 
 get('/') do
   erb(:index)
@@ -14,38 +16,50 @@ get('/contacts/new') do
 end
 
 get('/contacts') do
-  @contact = Contact.all()
+  @contacts = Contact.all()
   erb(:contacts)
 end
 
 post('/contacts') do
-  # first_name = params.fetch('first_name')
-  # last_name = params.fetch('last_name')
-  # job_title = params.fetch('job_title')
-  # company = params.fetch('company')
-  # attributes = {'first_name '=> first_name, 'last_name' => last_name, 'job_title' => job_title, 'company' => company}
+  first_name = params.fetch('first_name')
+  last_name = params.fetch('last_name')
+  job_title = params.fetch('job_title')
+  company = params.fetch('company')
+  attributes = {:first_name=> first_name, :last_name => last_name, :job_title => job_title, :company => company}
 
-  attributes = attributes.values_at('first_name', 'last_name', 'job_title','company')
   Contact.new(attributes).save()
   @contacts = Contact.all()
   erb(:contacts)
 end
 
-# get('/vehicles/:id') do
-#   @vehicle = Vehicle.find(params.fetch('id').to_i())
-#   erb(:vehicle)
-# end
-#
-# get('/dealerships/:id') do
-#   @dealership = Dealership.find(params.fetch('id').to_i())
-#   erb(:dealership)
-# end
-#
-# get('/dealerships/:id/vehicles/new') do
-#     @dealership = Dealership.find(params.fetch('id').to_i())
-#     erb(:dealership_vehicles_form)
-# end
-#
+post('/addresses') do
+  street_address = params.fetch('street_address')
+  city = params.fetch('city')
+  state = params.fetch('state')
+  type = params.fetch('type')
+  zip = params.fetch('zip')
+  attributes = {:street_address=> street_address, :city => city, :state => state, :zip => zip, :type => type}
+
+  @address = Address.new(attributes)
+  @address.save()
+
+  @contact = Contact.find(params.fetch('contact_id').to_i())
+
+  @contact.add_address(@address)
+  erb(:contact)
+end
+
+
+get('/contacts/:id') do
+  @contact = Contact.find(params.fetch('id').to_i())
+  erb(:contact)
+end
+
+get('/contacts/:id/addresses/new') do
+    @contact = Contact.find(params.fetch('id').to_i())
+    erb(:address_form)
+end
+
 # post('/new') do
 #   make = params.fetch('make')
 #   model = params.fetch('model')

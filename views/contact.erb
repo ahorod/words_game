@@ -1,0 +1,18 @@
+<h3>Here are addresses and phones for: <%= @contact.first_name() %> <%= @contact.last_name() %></h3>
+
+<ul>
+  <% @contact.address().each() do |address| %>
+    <li><%= address.street_address() %> <%= address.city() %> <%= address.state()%> <%= address.type() %></li>
+  <% end %>
+</ul>
+<ul>
+  <% @contact.phone_number().each() do |address| %>
+    <li><%= phone_number.area_code() %> <%= phone_number.number() %> <%= phone_number.type()%></li>
+  <% end %>
+</ul>
+
+<a href="/contacts/<%= @contact.id%>/addresses/new">Add new address</a>
+<br>
+<a href="/contacts/<%= @contact.id%>/phone_numbers/new">Add new phone number</a>
+<br>
+<a href="/">Return to Main Page</a>

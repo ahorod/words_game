@@ -1,11 +1,12 @@
 class Contact
    @@contacts = []
 
-  attr_accessor(:first_name, :last_name, :job_title, :company, :id, :address, :phone_number)
+  attr_accessor(:first_name, :last_name, :job_title, :company, :address, :phone_number)
+  attr_reader(:id)
 
   define_method(:initialize) do |attributes|
-    @first_name = attributes.fetch(:first_name)
-    @last_name = attributes.fetch(:last_name)
+    @first_name = (attributes.fetch(:first_name)).capitalize()
+    @last_name = (attributes.fetch(:last_name)).capitalize()
     @job_title = attributes.fetch(:job_title)
     @company = attributes.fetch(:company)
     @id = @@contacts.length().+(1)
