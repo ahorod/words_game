@@ -4,11 +4,11 @@ class Address
     attr_accessor(:street_address, :city, :state, :zip, :type, :id)
 
     define_method(:initialize) do |attributes|
-      @street_address = attributes.fetch(:street_address)
-      @city = attributes.fetch(:city)
-      @state = attributes.fetch(:state)
-      @zip = attributes.fetch(:zip)
-      @type = attributes.fetch(:type)
+      @street_address = attributes.fetch('street_address')
+      @city = attributes.fetch('city')
+      @state = attributes.fetch('state')
+      @zip = attributes.fetch('zip')
+      @type = attributes.fetch('type')
       @id = @@addresses.length().+(1)
     end
 

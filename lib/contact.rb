@@ -5,10 +5,10 @@ class Contact
   attr_reader(:id)
 
   define_method(:initialize) do |attributes|
-    @first_name = (attributes.fetch(:first_name)).capitalize()
-    @last_name = (attributes.fetch(:last_name)).capitalize()
-    @job_title = attributes.fetch(:job_title)
-    @company = attributes.fetch(:company)
+    @first_name = (attributes.fetch('first_name')).capitalize()
+    @last_name = (attributes.fetch('last_name')).capitalize()
+    @job_title = attributes.fetch('job_title')
+    @company = attributes.fetch('company')
     @id = @@contacts.length().+(1)
     @address = []
     @phone_number = []

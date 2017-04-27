@@ -33,8 +33,7 @@ post('/contacts') do
   # company = params.fetch('company')
   # attributes = {:first_name=> first_name, :last_name => last_name, :job_title => job_title, :company => company}
 
-new_contact = Contact.new(params)
-new_contact.save()
+  Contact.new(params).save()
   @contacts = Contact.all()
   erb(:contacts)
 end
@@ -45,14 +44,14 @@ get('/contacts/:id/addresses/new') do
 end
 
 post('/addresses') do
-  street_address = params.fetch('street_address')
-  city = params.fetch('city')
-  state = params.fetch('state')
-  type = params.fetch('type')
-  zip = params.fetch('zip')
-  attributes = {:street_address=> street_address, :city => city, :state => state, :zip => zip, :type => type}
+  # street_address = params.fetch('street_address')
+  # city = params.fetch('city')
+  # state = params.fetch('state')
+  # type = params.fetch('type')
+  # zip = params.fetch('zip')
+  # attributes = {:street_address=> street_address, :city => city, :state => state, :zip => zip, :type => type}
 
-  @address = Address.new(attributes)
+  @address = Address.new(params)
   @address.save()
 
   @contact = Contact.find(params.fetch('contact_id').to_i())
@@ -67,12 +66,12 @@ get('/contacts/:id/phone_numbers/new') do
 end
 
 post('/phone_numbers') do
-  area_code = params.fetch('area_code')
-  number = params.fetch('number')
-  type = params.fetch('type')
-  attributes = {:area_code=> area_code, :number => number, :type => type}
+  # area_code = params.fetch('area_code')
+  # number = params.fetch('number')
+  # type = params.fetch('type')
+  # attributes = {:area_code=> area_code, :number => number, :type => type}
 
-  @phone_number = Phone_number.new(attributes)
+  @phone_number = Phone_number.new(params)
   @phone_number.save()
 
   @contact = Contact.find(params.fetch('contact_id').to_i())
