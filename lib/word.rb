@@ -1,7 +1,7 @@
 class Word
    @@words = []
 
-  attr_accessor(:name, :definition)
+  attr_accessor(:name, :definitions)
   attr_reader(:id)
 
   define_method(:initialize) do |name|
