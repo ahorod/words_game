@@ -19,7 +19,7 @@
 * Ruby
 
 ## Support and contact details
-Please contact at prozerpina112009@gmail.com
+Please contact at https://github.com/ahorod
 
 ### License
 Copyright (c) 2017 **Anna Horodetska**
