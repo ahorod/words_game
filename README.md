@@ -11,8 +11,7 @@
 * Run bundle in Terminal
 * Run ruby app.rb in Terminal
 * Open on localhost:4567 in browser
- or
-* Open on Heroku
+* OR Open on Heroku https://calm-crag-96585.herokuapp.com/
 
 
 ## Technologies Used
